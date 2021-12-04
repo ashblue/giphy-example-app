@@ -23,7 +23,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings 0",
     "prepare": "husky install",
-    "ci:commit": "pretty-quick --staged && npm run lint"
+    "ci:commit": "pretty-quick --staged && npm run lint",
+    "ci:push": "npm run build && npm run test -- --watchAll false"
   },
   "eslintConfig": {
     "extends": [
