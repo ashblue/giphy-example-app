@@ -1,16 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import SearchForm from '../../organisms/SearchForm/SearchForm';
 import { searchGifs } from '../../../remotes/giphy/giphy';
-import { IGif } from '../../../remotes/giphy/i-gif';
-import Gallery from '../../organisms/Gallery/Gallery';
+import Gallery, { IGalleryItem } from '../../organisms/Gallery/Gallery';
 import Warning from '../../atoms/Warning/Warning';
+import { FavoritesContext } from '../../../context/FavoritesContext/FavoritesContext';
+import { IGif } from '../../../remotes/giphy/i-gif';
+import { FavoritesAction } from '../../../context/FavoritesContext/types/favorites-action';
 
 const DEFAULT_SEARCH = 'marvel';
 
 const PageSearch = () => {
+  const [favorites, favoritesDispatch] = useContext(FavoritesContext);
   const [error, setError] = useState<string | undefined>();
-  const [gifs, setGifs] = useState<IGif[]>([]);
+  const [gallery, setGallery] = useState<IGalleryItem[]>([]);
 
   const search = useCallback((text?: string) => {
     const getInitData = async () => {
@@ -18,13 +21,34 @@ const PageSearch = () => {
 
       try {
         const res = await searchGifs(text);
-        setGifs(res);
+        const data = res.map((gif) => ({
+          data: gif,
+          isFavorite: favorites.ids.has(gif.id),
+        }));
+
+        setGallery(data);
       } catch (e) {
         setError('There was an error, please try searching again');
       }
     };
 
     getInitData();
+  }, []);
+
+  const onClickFavorite = useCallback((gif: IGif, isFavorite: boolean) => {
+    if (isFavorite) {
+      favoritesDispatch({
+        type: FavoritesAction.Add,
+        payload: gif,
+      });
+
+      return;
+    }
+
+    favoritesDispatch({
+      type: FavoritesAction.Remove,
+      payload: gif.id,
+    });
   }, []);
 
   useEffect(() => {
@@ -35,7 +59,16 @@ const PageSearch = () => {
     <Container>
       <Row>
         <Col>
-          <h1 className="mt-3">GIPHY Example App</h1>
+          <h1 className="mt-3 text-center">
+            GIPHY Example App
+            <img
+              className="d-inline-block ms-2"
+              width="100"
+              height="27"
+              alt="Giphy attribution"
+              src="/giphy-logo.png"
+            />
+          </h1>
         </Col>
       </Row>
 
@@ -48,7 +81,11 @@ const PageSearch = () => {
 
       <Row>
         <Col>
-          <Gallery className="mt-4" gifs={gifs} />
+          <Gallery
+            onClickFavorite={onClickFavorite}
+            className="mt-4"
+            items={gallery}
+          />
         </Col>
       </Row>
     </Container>

@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
 import PageSearch from './atomic-design/pages/PageSearch/PageSearch';
+import { FavoritesContextProvider } from './context/FavoritesContext/FavoritesContext';
 
 const App = () => (
-  <div className="App">
+  <FavoritesContextProvider>
     <PageSearch />
-  </div>
+  </FavoritesContextProvider>
 );
 
 export default App;

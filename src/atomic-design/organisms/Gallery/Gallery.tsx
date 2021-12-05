@@ -1,19 +1,33 @@
 import React, { useCallback, useMemo } from 'react';
 import { IGif } from '../../../remotes/giphy/i-gif';
 import './Gallery.scss';
+import GiphyImage from '../../molecules/GiphyImage/GiphyImage';
 
-interface IProps {
-  gifs: IGif[];
-  className?: string;
+export interface IGalleryItem {
+  data: IGif;
+  isFavorite: boolean;
 }
 
-const Gallery = ({ gifs, className }: IProps) => {
+interface IProps {
+  className?: string;
+  onClickFavorite: (gif: IGif, favorite: boolean) => void;
+  items: IGalleryItem[];
+}
+
+const Gallery = ({ items, className, onClickFavorite }: IProps) => {
   const classes = useMemo(() => `gallery ${className}`, [className]);
 
   const printGifs = useCallback(
     () =>
-      gifs.map(({ title, id, url }) => <img alt={title} src={url} key={id} />),
-    [gifs],
+      items.map(({ data, isFavorite }) => (
+        <GiphyImage
+          key={data.id}
+          gif={data}
+          onClickFavorite={onClickFavorite}
+          isFavorite={isFavorite}
+        />
+      )),
+    [items, onClickFavorite],
   );
 
   return <div className={classes}>{printGifs()}</div>;

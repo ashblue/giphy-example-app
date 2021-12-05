@@ -3,9 +3,11 @@ import { IFavoritesState } from './types/i-favorites-state';
 const FAVORITES_KEY = 'GIPHY:FAVORITES';
 
 export const getDefaultFavorites = (): IFavoritesState => {
-  const defaultValueRaw = localStorage.getItem(FAVORITES_KEY);
-  if (defaultValueRaw) {
-    return JSON.parse(defaultValueRaw);
+  const valueRaw = localStorage.getItem(FAVORITES_KEY);
+  if (valueRaw) {
+    const state = JSON.parse(valueRaw);
+    state.ids = new Set<string>(state.ids);
+    return state;
   }
 
   return {
@@ -15,5 +17,11 @@ export const getDefaultFavorites = (): IFavoritesState => {
 };
 
 export const saveFavorites = (state: IFavoritesState) => {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(state));
+  localStorage.setItem(
+    FAVORITES_KEY,
+    JSON.stringify({
+      ...state,
+      ids: [...state.ids],
+    }),
+  );
 };
