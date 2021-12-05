@@ -1,0 +1,7 @@
+.search-form {
+  &__button {
+    transform: scaleX(-1);
+    width: 100px;
+    display: block;
+  }
+}

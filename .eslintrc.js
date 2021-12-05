@@ -24,12 +24,19 @@ module.exports = {
       'error',
       { namedComponents: 'arrow-function' },
     ],
+    'react/require-default-props': ['off'],
   },
   overrides: [
     {
       files: ['**/*.test.{ts,tsx,js,jsx}'],
       env: {
         jest: true,
+      },
+    },
+    {
+      files: ['src/remotes/**/*'],
+      rules: {
+        'import/prefer-default-export': ['off'],
       },
     },
   ],

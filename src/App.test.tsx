@@ -2,8 +2,17 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock('./atomic-design/pages/PageSearch', () => ({
+  __esModule: true,
+  default: () => <div data-testid="app__page" />,
+}));
+
+describe('App component', () => {
+  it('should render', () => {
+    render(<App />);
+
+    const page = screen.getByTestId('app__page');
+
+    expect(page).toBeTruthy();
+  });
 });
