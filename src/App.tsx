@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import PageSearch from './atomic-design/pages/PageSearch';
+import PageSearch from './atomic-design/pages/PageSearch/PageSearch';
 
 const App = () => (
   <div className="App">

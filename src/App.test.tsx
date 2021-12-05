@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-jest.mock('./atomic-design/pages/PageSearch', () => ({
+jest.mock('./atomic-design/pages/PageSearch/PageSearch', () => ({
   __esModule: true,
   default: () => <div data-testid="app__page" />,
 }));

@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import SearchForm from '../organisms/SearchForm/SearchForm';
-import { searchGifs } from '../../remotes/giphy/giphy';
-import { IGif } from '../../remotes/giphy/i-gif';
-import Gallery from '../organisms/Gallery/Gallery';
+import SearchForm from '../../organisms/SearchForm/SearchForm';
+import { searchGifs } from '../../../remotes/giphy/giphy';
+import { IGif } from '../../../remotes/giphy/i-gif';
+import Gallery from '../../organisms/Gallery/Gallery';
+import Warning from '../../atoms/Warning/Warning';
 
 const DEFAULT_SEARCH = 'marvel';
 
@@ -26,12 +27,6 @@ const PageSearch = () => {
     getInitData();
   }, []);
 
-  const printError = useCallback(() => {
-    if (error) return <p>{error}</p>;
-
-    return null;
-  }, [error]);
-
   useEffect(() => {
     search(DEFAULT_SEARCH);
   }, [search]);
@@ -47,7 +42,7 @@ const PageSearch = () => {
       <Row>
         <Col lg={{ span: 6, offset: 3 }}>
           <SearchForm className="mb-3" onSubmit={search} />
-          {printError()}
+          <Warning text={error} />
         </Col>
       </Row>
 

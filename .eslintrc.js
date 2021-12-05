@@ -34,7 +34,7 @@ module.exports = {
       },
     },
     {
-      files: ['src/remotes/**/*'],
+      files: ['src/remotes/**/*', 'src/context/**/*'],
       rules: {
         'import/prefer-default-export': ['off'],
       },
