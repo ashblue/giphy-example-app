@@ -35,13 +35,17 @@ const GiphyImage = ({ gif, onClickFavorite, isFavorite }: IProps) => {
 
   return (
     <div data-testid="giphy-image" className="giphy-image" style={wrapperStyle}>
-      <img
-        data-testid="giphy-image__gif"
-        src={gif.url}
-        alt={gif.title}
-        width={gif.width}
-        height={gif.height}
-      />
+      <picture>
+        <source srcSet={gif.url} type="image/webp" />
+        <source srcSet={gif.urlFallback} type="image/jpeg" />
+        <img
+          data-testid="giphy-image__gif"
+          src={gif.url}
+          alt={gif.title}
+          width={gif.width}
+          height={gif.height}
+        />
+      </picture>
 
       <button
         data-testid="giphy-image__favorite"

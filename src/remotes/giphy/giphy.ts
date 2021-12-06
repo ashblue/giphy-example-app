@@ -10,7 +10,7 @@ export const searchGifs = async (search?: string): Promise<IGif[]> => {
   const { data }: IGifSearchResponse = await res.json();
 
   return data.map(({ id, title, images }) => {
-    const { width, height, webp } = images.fixed_width;
-    return { id, width, height, url: webp, title };
+    const { width, height, webp, url } = images.fixed_width;
+    return { id, width, height, url: webp, title, urlFallback: url };
   });
 };

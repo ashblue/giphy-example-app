@@ -3,5 +3,6 @@ export interface IGif {
   width: number;
   height: number;
   url: string;
+  urlFallback: string;
   title: string;
 }
