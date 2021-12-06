@@ -33,7 +33,7 @@ const SearchForm = ({ onSubmit, className }: IProps) => {
           onChange={onChangeSearch}
         />
 
-        <Button className="search-form__button" variant="primary" type="submit">
+        <Button className="search-form__button" variant="info" type="submit">
           <FaSearch className="search-form__icon" />
           <span className="visually-hidden">Search</span>
         </Button>

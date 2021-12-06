@@ -17,18 +17,27 @@ interface IProps {
 const Gallery = ({ items, className, onClickFavorite }: IProps) => {
   const classes = useMemo(() => `gallery ${className}`, [className]);
 
-  const printGifs = useCallback(
-    () =>
-      items.map(({ data, isFavorite }) => (
-        <GiphyImage
-          key={data.id}
-          gif={data}
-          onClickFavorite={onClickFavorite}
-          isFavorite={isFavorite}
-        />
-      )),
-    [items, onClickFavorite],
-  );
+  const printGifs = useCallback(() => {
+    if (items.length === 0)
+      return (
+        <p className="text-center">
+          No gifs added yet. Go back to the search page and add some.
+        </p>
+      );
+
+    return (
+      <div className="gallery__grid">
+        {items.map(({ data, isFavorite }) => (
+          <GiphyImage
+            key={data.id}
+            gif={data}
+            onClickFavorite={onClickFavorite}
+            isFavorite={isFavorite}
+          />
+        ))}
+      </div>
+    );
+  }, [items, onClickFavorite]);
 
   return <div className={classes}>{printGifs()}</div>;
 };

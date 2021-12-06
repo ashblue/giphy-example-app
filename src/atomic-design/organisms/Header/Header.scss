@@ -1,0 +1,11 @@
+.header {
+  &__nav {
+    display: table;
+    margin: 0 auto;
+  }
+
+  &__nav-item {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}

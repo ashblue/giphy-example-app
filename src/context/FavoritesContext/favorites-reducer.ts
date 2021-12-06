@@ -7,7 +7,7 @@ import { IFavoritesAction } from './types/i-favorites-action';
 const add = (gif: IGif, state: IFavoritesState): IFavoritesState => {
   const newState = {
     ...state,
-    list: [...state.list, gif],
+    list: [gif, ...state.list],
     ids: new Set([...state.ids, gif.id]),
   };
 

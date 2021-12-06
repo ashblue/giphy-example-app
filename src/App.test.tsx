@@ -7,8 +7,14 @@ jest.mock('./atomic-design/pages/PageSearch/PageSearch', () => ({
   default: () => <div data-testid="app__page" />,
 }));
 
+// Prevent a crash due to SVG imports
+jest.mock('./atomic-design/pages/PageFavorites/PageFavorites', () => ({
+  __esModule: true,
+  default: () => <div />,
+}));
+
 describe('App component', () => {
-  it('should render', () => {
+  it('should render the search page', () => {
     render(<App />);
 
     const page = screen.getByTestId('app__page');
