@@ -36,7 +36,7 @@ const Header = () => {
           width="100"
           height="27"
           alt="Giphy attribution"
-          src="/giphy-logo.png"
+          src="./giphy-logo.png"
         />
       </h1>
     </div>
