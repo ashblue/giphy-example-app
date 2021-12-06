@@ -34,8 +34,9 @@ const GiphyImage = ({ gif, onClickFavorite, isFavorite }: IProps) => {
   }, [favorite]);
 
   return (
-    <div className="giphy-image" style={wrapperStyle}>
+    <div data-testid="giphy-image" className="giphy-image" style={wrapperStyle}>
       <img
+        data-testid="giphy-image__gif"
         src={gif.url}
         alt={gif.title}
         width={gif.width}
@@ -43,6 +44,7 @@ const GiphyImage = ({ gif, onClickFavorite, isFavorite }: IProps) => {
       />
 
       <button
+        data-testid="giphy-image__favorite"
         type="button"
         onClick={clickFavorite}
         className={favoriteClassName}
