@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/giphy-example-app/static/css/main.97d4bcfb.chunk.css",
-    "main.js": "/giphy-example-app/static/js/main.044cacbb.chunk.js",
-    "main.js.map": "/giphy-example-app/static/js/main.044cacbb.chunk.js.map",
+    "main.js": "/giphy-example-app/static/js/main.1a7f5db4.chunk.js",
+    "main.js.map": "/giphy-example-app/static/js/main.1a7f5db4.chunk.js.map",
     "runtime-main.js": "/giphy-example-app/static/js/runtime-main.fabbaa6b.js",
     "runtime-main.js.map": "/giphy-example-app/static/js/runtime-main.fabbaa6b.js.map",
     "static/css/2.0a9ec390.chunk.css": "/giphy-example-app/static/css/2.0a9ec390.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.fabc9644.chunk.js",
     "static/css/main.97d4bcfb.chunk.css",
-    "static/js/main.044cacbb.chunk.js"
+    "static/js/main.1a7f5db4.chunk.js"
   ]
 }
