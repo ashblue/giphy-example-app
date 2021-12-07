@@ -1,3 +1,5 @@
+![Live Website](docs/banner.png)
+
 # Getting Started
 
 I recommend starting things out by viewing the live [GitHub page](https://ashblue.github.io/giphy-example-app). Once you're done proceed on to setting up a local environment.
@@ -29,13 +31,13 @@ In the project directory, you can run:
 
 Runs the app in the development mode.
 
-### `npm lint`
-
-Lints the project with the current eslint configuration.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode. Please note there are custom tests for this project.
+
+### `npm run lint`
+
+Lints the project with the current eslint configuration.
 
 ### `npm run build`
 
@@ -58,3 +60,13 @@ Creates a production build and automatically deploys to GitHub pages. Requires r
 - Record the last search as a query parameter, so it can be copy and pasted to be shared
 - Add gif auto-load pagination when scrolling near the bottom
 - Restore previous search when navigating between pages
+
+## Performance / Accessibility
+
+The app is very fast minus the Giphy API call. Google Lighthouse gives it a solid rating for **desktop**.
+
+![Lighthouse Performance Rating - Desktop](docs/lighthouse-perfomance-desktop.png)
+
+Google Lighthouse also gives things a solid rating for a **mobile** evaluation.
+
+![Lighthouse Performance Rating - Mobile](docs/lighthouse-performance-desktop.png)
