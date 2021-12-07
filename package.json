@@ -2,7 +2,7 @@
   "name": "giphy-example-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ashblue.github.io/giphy-example-app",
+  "homepage": ".",
   "dependencies": {
     "bootstrap": "^5.1.3",
     "node-sass": "^6.0.1",

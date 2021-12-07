@@ -8,7 +8,10 @@ const add = (gif: IGif, state: IFavoritesState): IFavoritesState => {
   const newState = {
     ...state,
     list: [gif, ...state.list],
-    ids: new Set([...state.ids, gif.id]),
+    ids: {
+      ...state.ids,
+      [gif.id]: true,
+    },
   };
 
   saveFavorites(newState);
@@ -16,8 +19,7 @@ const add = (gif: IGif, state: IFavoritesState): IFavoritesState => {
 };
 
 const remove = (id: string, state: IFavoritesState) => {
-  const ids = new Set([...state.ids]);
-  ids.delete(id);
+  const { [id]: omit, ...ids } = state.ids;
 
   const newState = {
     ...state,

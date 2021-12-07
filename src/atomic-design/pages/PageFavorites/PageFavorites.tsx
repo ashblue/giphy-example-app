@@ -13,7 +13,7 @@ const PageFavorites = () => {
   useEffect(() => {
     const data = favorites.list.map((gif) => ({
       data: gif,
-      isFavorite: favorites.ids.has(gif.id),
+      isFavorite: favorites.ids[gif.id],
     }));
 
     setGallery(data);

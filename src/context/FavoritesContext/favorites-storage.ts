@@ -5,23 +5,15 @@ const FAVORITES_KEY = 'GIPHY:FAVORITES';
 export const getDefaultFavorites = (): IFavoritesState => {
   const valueRaw = localStorage.getItem(FAVORITES_KEY);
   if (valueRaw) {
-    const state = JSON.parse(valueRaw);
-    state.ids = new Set<string>(state.ids);
-    return state;
+    return JSON.parse(valueRaw);
   }
 
   return {
     list: [],
-    ids: new Set(),
+    ids: {},
   };
 };
 
 export const saveFavorites = (state: IFavoritesState) => {
-  localStorage.setItem(
-    FAVORITES_KEY,
-    JSON.stringify({
-      ...state,
-      ids: [...state.ids],
-    }),
-  );
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(state));
 };

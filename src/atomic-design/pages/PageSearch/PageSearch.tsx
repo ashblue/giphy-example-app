@@ -24,7 +24,7 @@ const PageSearch = () => {
         const res = await searchGifs(text);
         const data = res.map((gif) => ({
           data: gif,
-          isFavorite: favorites.ids.has(gif.id),
+          isFavorite: favorites.ids[gif.id],
         }));
 
         setGallery(data);
